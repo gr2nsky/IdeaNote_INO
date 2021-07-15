@@ -1,0 +1,2 @@
+rootProject.name = "IdeaNote_INO"
+include ':app'
