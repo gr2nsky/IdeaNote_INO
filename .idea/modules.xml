@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaNote_INO.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaNote_INO.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/IdeaNote_INO.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/IdeaNote_INO.app.iml" />
     </modules>
   </component>
 </project>
