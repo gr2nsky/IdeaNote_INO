@@ -2,7 +2,6 @@ package com.example.ideanote_ino.Dialog;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,11 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.ideanote_ino.R;
-import com.example.ideanote_ino.SQLite.MyIno;
-import com.example.ideanote_ino.SQLite.Queries;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.example.ideanote_ino.SQLite.QueryForMain;
 
 public class InputIdeaDialog extends Dialog {
     String TAG = "#InputIdeaDialog";
@@ -60,7 +55,7 @@ public class InputIdeaDialog extends Dialog {
                 return;
             }
 
-            Queries queries = new Queries(con);
+            QueryForMain queries = new QueryForMain(con);
             if (queries.insertIdea(str)){
                 Toast.makeText(con, "아이디어가 등록되었습니다.", Toast.LENGTH_SHORT).show();
             } else {

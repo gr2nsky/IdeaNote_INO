@@ -8,13 +8,13 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Queries {
-    String TAG = "Queries";
+public class QueryForMain {
+    String TAG = "QueryForMain";
     MyIno myIno;
     Context con;
     SQLiteDatabase db;
 
-    public Queries(Context con){
+    public QueryForMain(Context con){
         this.con = con;
         myIno = new MyIno(con);
     }
