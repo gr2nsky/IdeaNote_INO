@@ -27,4 +27,6 @@ public class MyIno extends SQLiteOpenHelper {
         db.execSQL(query);
         onCreate(db);
     }
+
+
 }

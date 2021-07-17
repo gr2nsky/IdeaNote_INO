@@ -42,7 +42,7 @@ public class InputIdeaDialog extends Dialog {
         tv_input_idea_dialog_positive = findViewById(R.id.tv_input_idea_dialog_positive);
 
         tv_input_idea_dialog_negative.setOnClickListener(onClickListener);
-        tv_input_idea_dialog_negative.setOnClickListener(onClickListener);
+        tv_input_idea_dialog_positive.setOnClickListener(onClickListener);
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -55,7 +55,7 @@ public class InputIdeaDialog extends Dialog {
             }
             //SQLite에 입력한 아이디어를 저장하는 부분
             Log.v(TAG, "touched tv_input_idea_dialog_positive");
-            String str = et_input_idea_dialog_idea.getText().toString().replace(" ", "");
+            String str = et_input_idea_dialog_idea.getText().toString();
             if( !inputChecker(str) ){
                 return;
             }
@@ -71,7 +71,8 @@ public class InputIdeaDialog extends Dialog {
     };
 
     public boolean inputChecker(String str){
-        if (str.equals("") || str == null){
+        String check = str.replace(" ", "");
+        if (check.equals("") || check == null){
             return false;
         }
         return true;
