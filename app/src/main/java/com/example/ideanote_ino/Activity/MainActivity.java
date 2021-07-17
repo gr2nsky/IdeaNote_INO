@@ -17,6 +17,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, LogoActivity.class);
         startActivity(intent);
         finish();
-
     }
 }
