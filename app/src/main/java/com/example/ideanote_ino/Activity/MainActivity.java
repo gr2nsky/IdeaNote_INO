@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ideanote_ino.Dialog.InputIdeaDialog;
 import com.example.ideanote_ino.R;
+import com.example.ideanote_ino.SQLite.QueryForMain;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView iv_main_show_before_idea;
     ImageView iv_main_add_idea;
     ImageView iv_main_show_next_idea;
+
+    QueryForMain queryForMain = new QueryForMain(MainActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         iv_main_show_next_idea = findViewById(R.id.iv_main_show_next_idea);
 
         iv_main_add_idea.setOnClickListener(clickedAddIdea);
+
+        if (!queryForMain.selectAllIdea()){
+            Toast.makeText(this, "아이디어 목록을 불러오는데 실패했습니다. 앱을 다시 시작해주세요.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     View.OnClickListener clickedAddIdea = new View.OnClickListener() {
