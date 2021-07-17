@@ -32,11 +32,14 @@ public class QueryForMain {
 
             Cursor cursor = db.rawQuery(query, null);
             while(cursor.moveToNext()){
+                String ino_dalete = cursor.getString(4);
+                if (ino_dalete != null){
+                    continue;
+                }
                 int ino_num = cursor.getInt(0);
                 String ino_idea = cursor.getString(1);
                 String ino_date = cursor.getString(2);
                 String ino_update = cursor.getString(3);
-                String ino_dalete = cursor.getString(4);
 
                 IdeaDto dto = new IdeaDto(ino_num, ino_idea, ino_date, ino_update, ino_dalete);
                 Log.v(TAG, dto.printAll());
