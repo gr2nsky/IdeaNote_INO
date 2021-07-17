@@ -57,6 +57,7 @@ public class IdeaDto {
     }
 
     public String printAll(){
-        return "ino_num : " + ino_num + ", ino_idea : "  + ino_idea + ", ino_update : " + ino_update + ", ino_dalete : "+ ino_dalete;
+        return "ino_num : " + ino_num + ", ino_idea : "  + ino_idea + ", ino_date : " + ino_date +
+                ", ino_update : " + ino_update + ", ino_dalete : "+ ino_dalete;
     }
 }
