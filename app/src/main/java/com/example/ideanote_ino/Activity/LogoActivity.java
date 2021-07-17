@@ -19,9 +19,6 @@ public class LogoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logo);
 
-        myIno = new MyIno(LogoActivity.this);
-
-        /*로고 띄운 후 다른 액티비티로 이동*/
         logoView();
     }
 
