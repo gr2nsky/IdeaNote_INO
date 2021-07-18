@@ -53,7 +53,7 @@ public class AllListActivity extends AppCompatActivity {
             int ino_num = list.get(position).getIno_num();
             Log.v("선택한 번호", Integer.toString(list.get(position).getIno_num()));
 
-            bottomSheet = new BottomSheetActivity(ino_num);
+            bottomSheet = new BottomSheetActivity(AllListActivity.this, ino_num);
             bottomSheet.show(getSupportFragmentManager(), bottomSheet.getTag());
         }
     };
