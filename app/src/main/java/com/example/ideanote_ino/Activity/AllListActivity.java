@@ -51,9 +51,9 @@ public class AllListActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             int ino_num = list.get(position).getIno_num();
-            Log.v("선택한 번호", Integer.toString(list.get(position).getIno_num()));
+            String ino_idea = list.get(position).getIno_idea();
 
-            bottomSheet = new BottomSheetActivity(AllListActivity.this, ino_num);
+            bottomSheet = new BottomSheetActivity(AllListActivity.this, ino_num, ino_idea);
             bottomSheet.show(getSupportFragmentManager(), bottomSheet.getTag());
         }
     };

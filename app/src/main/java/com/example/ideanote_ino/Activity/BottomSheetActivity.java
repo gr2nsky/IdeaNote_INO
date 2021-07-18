@@ -29,10 +29,12 @@ public class BottomSheetActivity extends BottomSheetDialogFragment {
 
     AllListActivity parent;
     int ino_num;
+    String ino_idea;
 
-    public BottomSheetActivity(AllListActivity parent, int num) {
+    public BottomSheetActivity(AllListActivity parent, int num, String idea) {
         this.ino_num = num;
         this.parent = parent;
+        this.ino_idea = idea;
     }
 
 
@@ -54,8 +56,9 @@ public class BottomSheetActivity extends BottomSheetDialogFragment {
         getView().findViewById(R.id.tv_bottom_sheet_idea_copy).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                // copy
                 ClipboardManager clipboardManager = (ClipboardManager) parent.getSystemService(CLIPBOARD_SERVICE);
-                ClipData clipData = ClipData.newPlainText("IDEA", Integer.toString(ino_num));
+                ClipData clipData = ClipData.newPlainText("IDEA", ino_idea);
                 clipboardManager.setPrimaryClip(clipData);
                 Toast.makeText(getActivity(), "복사 되었습니다.", Toast.LENGTH_SHORT).show();
                 return false;
@@ -66,7 +69,6 @@ public class BottomSheetActivity extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
                 // update
-                Log.v("바텀 : ino_num", Integer.toString(ino_num));
                 UpdateIdeaDialog updateIdeaDialog = new UpdateIdeaDialog(getActivity(), ino_num);
                 updateIdeaDialog.updateShow(getActivity(), ino_num);
             }
