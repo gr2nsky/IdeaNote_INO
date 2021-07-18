@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
     QueryForMain queryForMain = new QueryForMain(MainActivity.this);
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +40,15 @@ public class MainActivity extends AppCompatActivity {
         iv_main_add_idea.setOnClickListener(clickedAddIdea);
         iv_main_refrash_idea.setOnClickListener(showRandomIdea);
 
-        if (!queryForMain.selectAllIdea()){
+        iv_main_see_all.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AllListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        if (!queryForMain.selectAllList()){
             Toast.makeText(this, "아이디어 목록을 불러오는데 실패했습니다. 앱을 다시 시작해주세요.", Toast.LENGTH_SHORT).show();
         }
 

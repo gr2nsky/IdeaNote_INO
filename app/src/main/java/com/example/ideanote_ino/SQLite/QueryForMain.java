@@ -22,39 +22,6 @@ public class QueryForMain {
         myIno = new MyIno(con);
     }
 
-    public boolean selectAllIdea(){
-        IdeaDatas ideaDatas = IdeaDatas.getIdeaDatas();
-        ideaDatas.clear();
-
-        try{
-            db = myIno.getReadableDatabase();
-            String query = "SELECT * FROM myino";
-
-            Cursor cursor = db.rawQuery(query, null);
-            while(cursor.moveToNext()){
-                String ino_dalete = cursor.getString(4);
-                if (ino_dalete != null){
-                    continue;
-                }
-                int ino_num = cursor.getInt(0);
-                String ino_idea = cursor.getString(1);
-                String ino_date = cursor.getString(2);
-                String ino_update = cursor.getString(3);
-
-                IdeaDto dto = new IdeaDto(ino_num, ino_idea, ino_date, ino_update, ino_dalete);
-                Log.v(TAG, dto.printAll());
-                ideaDatas.appand(dto);
-            }
-            cursor.close();
-            myIno.close();
-            return true;
-        }catch (Exception e){
-            Log.v(TAG, "###################");
-            e.printStackTrace();
-        }
-        return false;
-    }
-
     public boolean selectAllList(){
         IdeaDatas ideaDatas = IdeaDatas.getIdeaDatas();
         ideaDatas.clear();

@@ -49,14 +49,13 @@ public class DeleteIdaDialog extends Dialog {
                 dismiss();
                 return;
             }
-            //SQLite에 입력한 아이디어를 저장하는 부분
+
             Log.v(TAG, "touched tv_update_idea_dialog_ok");
-//            if( !inputChecker(str) ){
-//                return;
-//            }
 
             QueryForMain queries = new QueryForMain(con);
             if (queries.deleteIdea(ino_num)){
+                QueryForMain queryForMain = new QueryForMain(con);
+                queryForMain.selectAllList();
                 Toast.makeText(con, "아이디어가 삭제되었습니다.", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(con, "아이디어 삭제실패했습니다.", Toast.LENGTH_SHORT).show();

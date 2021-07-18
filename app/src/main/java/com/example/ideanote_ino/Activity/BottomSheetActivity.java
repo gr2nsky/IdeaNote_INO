@@ -1,7 +1,5 @@
 package com.example.ideanote_ino.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -15,25 +13,26 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ideanote_ino.Dialog.DeleteIdaDialog;
-import com.example.ideanote_ino.Dialog.InputIdeaDialog;
 import com.example.ideanote_ino.Dialog.UpdateIdeaDialog;
-import com.example.ideanote_ino.Interface.AllListResetInterface;
 import com.example.ideanote_ino.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import static android.content.Context.CLIPBOARD_SERVICE;
-import static androidx.core.content.ContextCompat.getSystemService;
 
-public class BottomSheetActivity extends BottomSheetDialogFragment implements AllListResetInterface {
+public class BottomSheetActivity extends BottomSheetDialogFragment {
 
     TextView tv_bottom_sheet_idea_copy;
     TextView tv_bottom_sheet_idea_update;
     TextView tv_bottom_sheet_idea_delete;
 
+    AllListActivity parent;
     int ino_num;
 
-    public BottomSheetActivity(int num) {
+    public BottomSheetActivity(AllListActivity parent, int num) {
         this.ino_num = num;
+        this.parent = parent;
     }
 
 
@@ -55,10 +54,10 @@ public class BottomSheetActivity extends BottomSheetDialogFragment implements Al
         getView().findViewById(R.id.tv_bottom_sheet_idea_copy).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-//                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-//                ClipData clipData = ClipData.newPlainText("IDEA", Integer.toString(ino_num));
-//                clipboardManager.setPrimaryClip(clipData);
-//                Toast.makeText(getActivity(), "복사 되었습니다.", Toast.LENGTH_SHORT).show();
+                ClipboardManager clipboardManager = (ClipboardManager) parent.getSystemService(CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("IDEA", Integer.toString(ino_num));
+                clipboardManager.setPrimaryClip(clipData);
+                Toast.makeText(getActivity(), "복사 되었습니다.", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
@@ -81,11 +80,6 @@ public class BottomSheetActivity extends BottomSheetDialogFragment implements Al
                 deleteIdaDialog.deleteShow(getActivity(), ino_num);
             }
         });
-
-    }
-
-    @Override
-    public void onAllListReset(boolean isSelected) {
 
     }
 }
