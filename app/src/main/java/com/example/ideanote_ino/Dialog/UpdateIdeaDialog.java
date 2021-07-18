@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.ideanote_ino.Interface.AllListResetInterface;
 import com.example.ideanote_ino.R;
 import com.example.ideanote_ino.SQLite.QueryForMain;
 
@@ -24,8 +23,6 @@ public class UpdateIdeaDialog extends Dialog {
     TextView tv_update_idea_dialog_ok;
 
     int ino_num;
-
-    private AllListResetInterface allListResetInterface;
 
     public UpdateIdeaDialog(@NonNull Context context, int ino_num) {
         super(context);
@@ -64,7 +61,7 @@ public class UpdateIdeaDialog extends Dialog {
 
             QueryForMain queries = new QueryForMain(con);
             if (queries.updateIdea(str, ino_num)){
-                allListResetInterface.onAllListReset(true);
+                queries.selectAllList();
                 Toast.makeText(con, "아이디어가 수정되었습니다.", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(con, "아이디어 수정에 실패했습니다.", Toast.LENGTH_SHORT).show();

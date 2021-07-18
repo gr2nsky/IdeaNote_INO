@@ -1,10 +1,5 @@
 package com.example.ideanote_ino.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,19 +7,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ideanote_ino.Dialog.DeleteIdaDialog;
-import com.example.ideanote_ino.Dialog.InputIdeaDialog;
 import com.example.ideanote_ino.Dialog.UpdateIdeaDialog;
-import com.example.ideanote_ino.Interface.AllListResetInterface;
 import com.example.ideanote_ino.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-import static android.content.Context.CLIPBOARD_SERVICE;
-import static androidx.core.content.ContextCompat.getSystemService;
-
-public class BottomSheetActivity extends BottomSheetDialogFragment implements AllListResetInterface {
+public class BottomSheetActivity extends BottomSheetDialogFragment {
 
     TextView tv_bottom_sheet_idea_copy;
     TextView tv_bottom_sheet_idea_update;
@@ -81,11 +70,6 @@ public class BottomSheetActivity extends BottomSheetDialogFragment implements Al
                 deleteIdaDialog.deleteShow(getActivity(), ino_num);
             }
         });
-
-    }
-
-    @Override
-    public void onAllListReset(boolean isSelected) {
 
     }
 }
