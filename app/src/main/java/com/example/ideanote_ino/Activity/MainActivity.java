@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView iv_main_add_idea;
 
     QueryForMain queryForMain = new QueryForMain(MainActivity.this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

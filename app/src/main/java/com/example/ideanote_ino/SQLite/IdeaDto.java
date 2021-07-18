@@ -16,6 +16,12 @@ public class IdeaDto {
         this.ino_dalete = ino_dalete;
     }
 
+    public IdeaDto(int ino_num, String ino_idea, String ino_date) {
+        this.ino_num = ino_num;
+        this.ino_idea = ino_idea;
+        this.ino_date = ino_date;
+    }
+
     public int getIno_num() {
         return ino_num;
     }
