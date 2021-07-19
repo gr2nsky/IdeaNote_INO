@@ -20,7 +20,7 @@ public class IdeaDatas {
     }
 
     public IdeaDto getRandomIdea(){
-        int arraySize = ideas.size() - 1;
+        int arraySize = ideas.size();
         Random random = new Random();
         int randVal = random.nextInt(arraySize);
         return ideas.get(randVal);

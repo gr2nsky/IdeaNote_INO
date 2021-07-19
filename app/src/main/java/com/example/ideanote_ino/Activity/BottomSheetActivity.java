@@ -1,5 +1,6 @@
 package com.example.ideanote_ino.Activity;
 
+import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -12,9 +13,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ideanote_ino.Adapter.ListViewAdapter;
 import com.example.ideanote_ino.Dialog.DeleteIdaDialog;
 import com.example.ideanote_ino.Dialog.UpdateIdeaDialog;
 import com.example.ideanote_ino.R;
+import com.example.ideanote_ino.SQLite.IdeaDto;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import android.content.ClipData;
@@ -27,16 +30,22 @@ public class BottomSheetActivity extends BottomSheetDialogFragment {
     TextView tv_bottom_sheet_idea_update;
     TextView tv_bottom_sheet_idea_delete;
 
-    AllListActivity parent;
-    int ino_num;
-    String ino_idea;
+    MainActivity mainActivity = null;
+    AllListActivity allListActivity = null;
 
-    public BottomSheetActivity(AllListActivity parent, int num, String idea) {
-        this.ino_num = num;
-        this.parent = parent;
-        this.ino_idea = idea;
+    IdeaDto idea;
+    ListViewAdapter adapter;
+
+    public BottomSheetActivity(MainActivity parent, IdeaDto idea) {
+        this.idea = idea;
+        this.mainActivity = parent;
     }
 
+    public BottomSheetActivity(AllListActivity parent, IdeaDto idea, ListViewAdapter adapter) {
+        this.idea = idea;
+        this.allListActivity = parent;
+        this.adapter = adapter;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,22 +55,20 @@ public class BottomSheetActivity extends BottomSheetDialogFragment {
         tv_bottom_sheet_idea_update = view.findViewById(R.id.tv_bottom_sheet_idea_update);
         tv_bottom_sheet_idea_delete = view.findViewById(R.id.tv_bottom_sheet_idea_delete);
 
-
         return view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getView().findViewById(R.id.tv_bottom_sheet_idea_copy).setOnTouchListener(new View.OnTouchListener() {
+        getView().findViewById(R.id.tv_bottom_sheet_idea_copy).setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                // copy
-                ClipboardManager clipboardManager = (ClipboardManager) parent.getSystemService(CLIPBOARD_SERVICE);
-                ClipData clipData = ClipData.newPlainText("IDEA", ino_idea);
+            public void onClick(View v) {
+                ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("IDEA", idea.getIno_idea());
                 clipboardManager.setPrimaryClip(clipData);
                 Toast.makeText(getActivity(), "복사 되었습니다.", Toast.LENGTH_SHORT).show();
-                return false;
+                dismiss();
             }
         });
 
@@ -69,8 +76,14 @@ public class BottomSheetActivity extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
                 // update
-                UpdateIdeaDialog updateIdeaDialog = new UpdateIdeaDialog(getActivity(), ino_num);
-                updateIdeaDialog.updateShow(getActivity(), ino_num);
+                UpdateIdeaDialog updateIdeaDialog = null;
+                if(mainActivity != null){
+                    updateIdeaDialog = new UpdateIdeaDialog(getActivity(), idea, 1);
+                } else {
+                    updateIdeaDialog = new UpdateIdeaDialog(getActivity(), idea, adapter);
+                }
+                updateIdeaDialog.updateShow();
+                dismiss();
             }
         });
 
@@ -78,10 +91,18 @@ public class BottomSheetActivity extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
                 // delete
-                DeleteIdaDialog deleteIdaDialog = new DeleteIdaDialog(getActivity(), ino_num);
-                deleteIdaDialog.deleteShow(getActivity(), ino_num);
+                DeleteIdaDialog deleteIdaDialog = new DeleteIdaDialog(getActivity(), idea);
+                deleteIdaDialog.deleteShow();
+                dismiss();
             }
         });
 
+    }
+
+    public Activity getContext(){
+        if (mainActivity == null) {
+            return allListActivity;
+        }
+        return mainActivity;
     }
 }

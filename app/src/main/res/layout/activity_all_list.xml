@@ -9,12 +9,30 @@
     tools:context=".Activity.AllListActivity"
     android:padding="20dp">
 
-
-    <ImageView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_search_40"
-        />
+        android:background="@drawable/backgound_all_list_search_bar"
+        android:orientation="horizontal"
+        android:padding="5dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_search_40"
+            android:layout_gravity="center"/>
+        <EditText
+            android:id="@+id/et_all_list_search"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#ffffff"
+            android:hint="검색할 내용을 입력해 주세요"
+            android:textSize="20dp"
+            android:textColor="@color/basic"
+            android:fontFamily="@font/nanum_barun_gothic"
+            android:maxLines="1"
+            android:gravity="left|center"/>
+    </LinearLayout>
     <ListView
         android:id="@+id/lv_all_list"
         android:layout_width="match_parent"
