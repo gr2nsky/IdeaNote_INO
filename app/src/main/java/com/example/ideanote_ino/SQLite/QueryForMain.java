@@ -16,6 +16,7 @@ public class QueryForMain {
     MyIno myIno;
     Context con;
     SQLiteDatabase db;
+    public IdeaDto nowIdeaDto = null;
 
     public QueryForMain(Context con){
         this.con = con;
@@ -50,8 +51,6 @@ public class QueryForMain {
         return false;
     }
 
-
-
     public boolean insertIdea(String str){
         try{
             db = myIno.getWritableDatabase();
@@ -70,12 +69,16 @@ public class QueryForMain {
     public boolean updateIdea(String str, int ino_num){
         try{
             db = myIno.getWritableDatabase();
-            String query = "UPDATE myino SET ino_idea = '" + str + "', ino_update = '" + getTime() + "' WHERE ino_num = " + ino_num;
+
+            String updateTime = getTime();
+
+            String query = "UPDATE myino SET ino_idea = '" + str + "', ino_update = '" + updateTime + "' WHERE ino_num = " + ino_num;
             Log.v("query", query);
 
             db.execSQL(query);
             myIno.close();
 
+            nowIdeaDto = new IdeaDto(ino_num, str, updateTime);
             return true;
         }catch (Exception e){
             Log.v(TAG, "###################");
@@ -100,7 +103,6 @@ public class QueryForMain {
         }
         return false;
     }
-
 
     private String getTime() {
         long mNow = System.currentTimeMillis();

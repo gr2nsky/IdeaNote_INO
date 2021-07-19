@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.ideanote_ino.R;
+import com.example.ideanote_ino.SQLite.IdeaDto;
 import com.example.ideanote_ino.SQLite.QueryForMain;
 
 public class DeleteIdaDialog extends Dialog {
@@ -21,12 +22,12 @@ public class DeleteIdaDialog extends Dialog {
     TextView tv_delete_idea_dialog_cancel;
     TextView tv_delete_idea_dialog_ok;
 
-    int ino_num;
+    IdeaDto ideaDto;
 
-    public DeleteIdaDialog(@NonNull Context context, int ino_num) {
+    public DeleteIdaDialog(@NonNull Context context, IdeaDto ideaDto) {
         super(context);
         this.con = context;
-        this.ino_num = ino_num;
+        this.ideaDto = ideaDto;
     }
 
     @Override
@@ -53,10 +54,11 @@ public class DeleteIdaDialog extends Dialog {
             Log.v(TAG, "touched tv_update_idea_dialog_ok");
 
             QueryForMain queries = new QueryForMain(con);
-            if (queries.deleteIdea(ino_num)){
+            if (queries.deleteIdea(ideaDto.getIno_num())){
                 QueryForMain queryForMain = new QueryForMain(con);
                 queryForMain.selectAllList();
                 Toast.makeText(con, "아이디어가 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                Log.v(TAG, "#########################삭제함");
             } else {
                 Toast.makeText(con, "아이디어 삭제실패했습니다.", Toast.LENGTH_SHORT).show();
             }
@@ -64,12 +66,10 @@ public class DeleteIdaDialog extends Dialog {
         }
     };
 
-    public void deleteShow(Context con, int num){
-        Log.v("다이얼로그 : ino_num", Integer.toString(ino_num));
-        DeleteIdaDialog dialog = new DeleteIdaDialog(con, num);
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.setCancelable(true);
-        dialog.show();
+    public void deleteShow(){
+        setCanceledOnTouchOutside(false);
+        setCancelable(true);
+        show();
     }
 
 
