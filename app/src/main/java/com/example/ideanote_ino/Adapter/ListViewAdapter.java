@@ -28,6 +28,14 @@ public class ListViewAdapter extends BaseAdapter {
         this.inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+    public ArrayList<IdeaDto> getList() {
+        return list;
+    }
+
+    public void setList(ArrayList<IdeaDto> list) {
+        this.list = list;
+    }
+
     @Override
     public int getCount() {
         return list.size();
@@ -56,5 +64,10 @@ public class ListViewAdapter extends BaseAdapter {
         tv_list_content.setText(list.get(position).getIno_idea());
 
         return convertView;
+    }
+
+    public void refresh(){
+
+
     }
 }

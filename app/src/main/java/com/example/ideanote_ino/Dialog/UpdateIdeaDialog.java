@@ -11,7 +11,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.ideanote_ino.Activity.MainActivity;
+import com.example.ideanote_ino.Adapter.ListViewAdapter;
+import com.example.ideanote_ino.Common.IdeaDatas;
 import com.example.ideanote_ino.R;
+import com.example.ideanote_ino.SQLite.IdeaDto;
 import com.example.ideanote_ino.SQLite.QueryForMain;
 
 public class UpdateIdeaDialog extends Dialog {
@@ -22,12 +26,22 @@ public class UpdateIdeaDialog extends Dialog {
     TextView tv_update_idea_dialog_cancel;
     TextView tv_update_idea_dialog_ok;
 
-    int ino_num;
+    IdeaDto idea;
+    ListViewAdapter adapter = null;
+    int type = 0;
 
-    public UpdateIdeaDialog(@NonNull Context context, int ino_num) {
+    public UpdateIdeaDialog(@NonNull Context context, IdeaDto idea, int type) {
         super(context);
         this.con = context;
-        this.ino_num = ino_num;
+        this.idea = idea;
+        this.type = type;
+    }
+
+    public UpdateIdeaDialog(@NonNull Context context, IdeaDto idea, ListViewAdapter adapter) {
+        super(context);
+        this.con = context;
+        this.idea = idea;
+        this.adapter = adapter;
     }
 
     @Override
@@ -41,6 +55,8 @@ public class UpdateIdeaDialog extends Dialog {
 
         tv_update_idea_dialog_cancel.setOnClickListener(onClickListener);
         tv_update_idea_dialog_ok.setOnClickListener(onClickListener);
+
+        et_update_idea_dialog_idea.setText(idea.getIno_idea());
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -51,7 +67,7 @@ public class UpdateIdeaDialog extends Dialog {
                 dismiss();
                 return;
             }
-            //SQLite에 입력한 아이디어를 저장하는 부분
+
             Log.v(TAG, "touched tv_update_idea_dialog_ok");
             String str = et_update_idea_dialog_idea.getText().toString();
             Log.v(TAG, str);
@@ -60,9 +76,17 @@ public class UpdateIdeaDialog extends Dialog {
             }
 
             QueryForMain queries = new QueryForMain(con);
-            if (queries.updateIdea(str, ino_num)){
+            if (queries.updateIdea(str, idea.getIno_num())){
                 queries.selectAllList();
                 Toast.makeText(con, "아이디어가 수정되었습니다.", Toast.LENGTH_SHORT).show();
+
+                //메인에서 업데이트 작업시 tv 갱신
+                if (type == 1){
+                    MainActivity main = (MainActivity) con;
+                    IdeaDto dto = queries.nowIdeaDto;
+                    main.tv_main_idea.setText(dto.getIno_idea());
+                    main.tv_main_idea_date.setText(dto.getIno_date());
+                }
             } else {
                 Toast.makeText(con, "아이디어 수정에 실패했습니다.", Toast.LENGTH_SHORT).show();
             }
@@ -79,14 +103,10 @@ public class UpdateIdeaDialog extends Dialog {
         return true;
     }
 
-
-    public void updateShow(Context con, int num){
-        Log.v("다이얼로그 : ino_num", Integer.toString(ino_num));
-//        this.ino_num = num;
-        UpdateIdeaDialog dialog = new UpdateIdeaDialog(con, num);
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.setCancelable(true);
-        dialog.show();
+    public void updateShow(){
+        setCanceledOnTouchOutside(false);
+        setCancelable(true);
+        show();
     }
 
 }
