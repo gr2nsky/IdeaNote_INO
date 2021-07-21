@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.ideanote_ino.Activity.AllListActivity;
 import com.example.ideanote_ino.Activity.MainActivity;
 import com.example.ideanote_ino.Adapter.ListViewAdapter;
 import com.example.ideanote_ino.Common.IdeaDatas;
@@ -37,11 +38,10 @@ public class UpdateIdeaDialog extends Dialog {
         this.type = type;
     }
 
-    public UpdateIdeaDialog(@NonNull Context context, IdeaDto idea, ListViewAdapter adapter) {
+    public UpdateIdeaDialog(@NonNull Context context, IdeaDto idea) {
         super(context);
         this.con = context;
         this.idea = idea;
-        this.adapter = adapter;
     }
 
     @Override
@@ -86,6 +86,9 @@ public class UpdateIdeaDialog extends Dialog {
                     IdeaDto dto = queries.nowIdeaDto;
                     main.tv_main_idea.setText(dto.getIno_idea());
                     main.tv_main_idea_date.setText(dto.getIno_date());
+                } else {
+                    AllListActivity al = (AllListActivity) con;
+                    al.getAllList();
                 }
             } else {
                 Toast.makeText(con, "아이디어 수정에 실패했습니다.", Toast.LENGTH_SHORT).show();

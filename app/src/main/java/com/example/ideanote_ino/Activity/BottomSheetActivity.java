@@ -80,7 +80,7 @@ public class BottomSheetActivity extends BottomSheetDialogFragment {
                 if(mainActivity != null){
                     updateIdeaDialog = new UpdateIdeaDialog(getActivity(), idea, 1);
                 } else {
-                    updateIdeaDialog = new UpdateIdeaDialog(getActivity(), idea, adapter);
+                    updateIdeaDialog = new UpdateIdeaDialog(getActivity(), idea);
                 }
                 updateIdeaDialog.updateShow();
                 dismiss();
