@@ -21,7 +21,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
     private Context mContext;
     private int layout = 0;
     ArrayList<IdeaDto> list = new ArrayList<>();
-    final ArrayList<IdeaDto> f_list;
+    ArrayList<IdeaDto> f_list;
     private LayoutInflater inflater = null;
     ItemFilter itemFilter = new ItemFilter();
 
@@ -39,6 +39,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
 
     public void setList(ArrayList<IdeaDto> list) {
         this.list = list;
+        f_list = new ArrayList<>(list);
     }
 
     @Override
@@ -84,10 +85,10 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
             String filterString = constraint.toString();
             FilterResults results = new FilterResults();
 
-            final ArrayList filteredList = new ArrayList();
+            ArrayList<IdeaDto> filteredList = new ArrayList<>();
 
-            if (filterString != null && filterString.trim().equalsIgnoreCase("") != true) {
-                String filterPattern = constraint.toString().toLowerCase().trim();
+            if (filterString != null && filterString.trim().length() != 0) {
+                String filterPattern = filterString.toLowerCase();
                 for (IdeaDto dto: list) {
                     if (dto.getIno_idea().toLowerCase().contains(filterPattern)) {
                         filteredList.add(dto);
@@ -96,6 +97,8 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
                 results.values = filteredList;
                 results.count = filteredList.size();
             } else {
+//                IdeaDatas id = IdeaDatas.getIdeaDatas();
+//                f_list = id.get();
                 results.values = f_list;
                 results.count = f_list.size();
             }
