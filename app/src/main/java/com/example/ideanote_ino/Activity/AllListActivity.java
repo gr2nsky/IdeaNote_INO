@@ -7,9 +7,11 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.example.ideanote_ino.Adapter.ListViewAdapter;
 import com.example.ideanote_ino.Common.IdeaDatas;
@@ -29,7 +31,7 @@ public class AllListActivity extends AppCompatActivity {
     ArrayList<IdeaDto> list = null;
     ListViewAdapter adapter;
 
-    EditText et_all_list_search;
+    SearchView search_bar_all_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,21 @@ public class AllListActivity extends AppCompatActivity {
         lv_all_list = findViewById(R.id.lv_all_list);
         lv_all_list.setOnItemClickListener(clickListItem);
 
-        et_all_list_search = findViewById(R.id.et_all_list_search);
+        search_bar_all_list = findViewById(R.id.search_bar_all_list);
+
+        search_bar_all_list.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        search_bar_all_list.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
         getAllList();
     }
 
@@ -52,7 +68,6 @@ public class AllListActivity extends AppCompatActivity {
         } else {
             adapter.setList(list);
             adapter.notifyDataSetChanged();
-            Log.v(TAG, "#########################신");
         }
     }
 

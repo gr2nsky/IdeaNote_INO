@@ -34,7 +34,7 @@ public class BottomSheetActivity extends BottomSheetDialogFragment {
     AllListActivity allListActivity = null;
 
     IdeaDto idea;
-    ListViewAdapter adapter;
+    ListViewAdapter adapter = null;
 
     public BottomSheetActivity(MainActivity parent, IdeaDto idea) {
         this.idea = idea;
@@ -80,7 +80,7 @@ public class BottomSheetActivity extends BottomSheetDialogFragment {
                 if(mainActivity != null){
                     updateIdeaDialog = new UpdateIdeaDialog(getActivity(), idea, 1);
                 } else {
-                    updateIdeaDialog = new UpdateIdeaDialog(getActivity(), idea, adapter);
+                    updateIdeaDialog = new UpdateIdeaDialog(getActivity(), idea);
                 }
                 updateIdeaDialog.updateShow();
                 dismiss();
@@ -90,8 +90,13 @@ public class BottomSheetActivity extends BottomSheetDialogFragment {
         getView().findViewById(R.id.tv_bottom_sheet_idea_delete).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DeleteIdaDialog deleteIdaDialog;
                 // delete
-                DeleteIdaDialog deleteIdaDialog = new DeleteIdaDialog(getActivity(), idea);
+                if(mainActivity != null){
+                    deleteIdaDialog = new DeleteIdaDialog(getActivity(), idea, 1);
+                } else {
+                    deleteIdaDialog = new DeleteIdaDialog(getActivity(), idea);
+                }
                 deleteIdaDialog.deleteShow();
                 dismiss();
             }

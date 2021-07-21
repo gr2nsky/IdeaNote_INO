@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.example.ideanote_ino.Common.IdeaDatas;
@@ -14,18 +16,21 @@ import com.example.ideanote_ino.SQLite.QueryForMain;
 
 import java.util.ArrayList;
 
-public class ListViewAdapter extends BaseAdapter {
+public class ListViewAdapter extends BaseAdapter implements Filterable {
 
     private Context mContext;
     private int layout = 0;
     ArrayList<IdeaDto> list = new ArrayList<>();
+    final ArrayList<IdeaDto> f_list;
     private LayoutInflater inflater = null;
+    ItemFilter itemFilter = new ItemFilter();
 
     public ListViewAdapter(Context mContext, int layout, ArrayList<IdeaDto> list) {
         this.mContext = mContext;
         this.layout = layout;
         this.list = list;
         this.inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        f_list = new ArrayList<>(list);
     }
 
     public ArrayList<IdeaDto> getList() {
@@ -66,8 +71,43 @@ public class ListViewAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void refresh(){
+    // ------ filter -------
+    @Override
+    public Filter getFilter() {
+        return itemFilter;
+    }
 
+    private class ItemFilter extends Filter{
 
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            String filterString = constraint.toString();
+            FilterResults results = new FilterResults();
+
+            final ArrayList filteredList = new ArrayList();
+
+            if (filterString != null && filterString.trim().equalsIgnoreCase("") != true) {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for (IdeaDto dto: list) {
+                    if (dto.getIno_idea().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(dto);
+                    }
+                }
+                results.values = filteredList;
+                results.count = filteredList.size();
+            } else {
+                results.values = f_list;
+                results.count = f_list.size();
+            }
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            list.clear();
+            list.addAll((ArrayList<IdeaDto>) results.values);
+            notifyDataSetChanged();
+        }
     }
 }

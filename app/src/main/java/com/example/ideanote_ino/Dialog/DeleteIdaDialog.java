@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.ideanote_ino.Activity.AllListActivity;
+import com.example.ideanote_ino.Activity.MainActivity;
+import com.example.ideanote_ino.Adapter.ListViewAdapter;
 import com.example.ideanote_ino.R;
 import com.example.ideanote_ino.SQLite.IdeaDto;
 import com.example.ideanote_ino.SQLite.QueryForMain;
@@ -23,7 +26,14 @@ public class DeleteIdaDialog extends Dialog {
     TextView tv_delete_idea_dialog_ok;
 
     IdeaDto ideaDto;
+    int type = 0;
 
+    public DeleteIdaDialog(@NonNull Context context, IdeaDto ideaDto, int type) {
+        super(context);
+        this.con = context;
+        this.ideaDto = ideaDto;
+        this.type = type;
+    }
     public DeleteIdaDialog(@NonNull Context context, IdeaDto ideaDto) {
         super(context);
         this.con = context;
@@ -58,7 +68,13 @@ public class DeleteIdaDialog extends Dialog {
                 QueryForMain queryForMain = new QueryForMain(con);
                 queryForMain.selectAllList();
                 Toast.makeText(con, "아이디어가 삭제되었습니다.", Toast.LENGTH_SHORT).show();
-                Log.v(TAG, "#########################삭제함");
+                if(type == 1){
+                    MainActivity main = (MainActivity) con;
+                    main.setRandomIdea();
+                } else {
+                    AllListActivity al = (AllListActivity) con;
+                    al.getAllList();
+                }
             } else {
                 Toast.makeText(con, "아이디어 삭제실패했습니다.", Toast.LENGTH_SHORT).show();
             }
