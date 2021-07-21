@@ -20,8 +20,10 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
 
     private Context mContext;
     private int layout = 0;
-    ArrayList<IdeaDto> list = new ArrayList<>();
+    //항상 ideadatas의 원본이 되는 배열
     ArrayList<IdeaDto> f_list;
+    //검색으로 걸러지는 배열 (실제 보여주는 배열)
+    ArrayList<IdeaDto> list = new ArrayList<>();
     private LayoutInflater inflater = null;
     ItemFilter itemFilter = new ItemFilter();
 
@@ -89,7 +91,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
 
             if (filterString != null && filterString.trim().length() != 0) {
                 String filterPattern = filterString.toLowerCase();
-                for (IdeaDto dto: list) {
+                for (IdeaDto dto: f_list) {
                     if (dto.getIno_idea().toLowerCase().contains(filterPattern)) {
                         filteredList.add(dto);
                     }
