@@ -97,8 +97,6 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
                 results.values = filteredList;
                 results.count = filteredList.size();
             } else {
-//                IdeaDatas id = IdeaDatas.getIdeaDatas();
-//                f_list = id.get();
                 results.values = f_list;
                 results.count = f_list.size();
             }
