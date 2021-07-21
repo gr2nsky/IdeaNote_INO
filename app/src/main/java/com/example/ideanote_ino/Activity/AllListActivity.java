@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.example.ideanote_ino.Adapter.ListViewAdapter;
 import com.example.ideanote_ino.Common.IdeaDatas;
@@ -26,6 +27,7 @@ public class AllListActivity extends AppCompatActivity {
 
     ListView lv_all_list;
     BottomSheetActivity bottomSheet;
+    TextView tv_all_list_no_data;
 
     IdeaDatas ideaDatas = null;
     ArrayList<IdeaDto> list = null;
@@ -38,6 +40,7 @@ public class AllListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_list);
 
+        tv_all_list_no_data = findViewById(R.id.tv_all_list_no_data);
         lv_all_list = findViewById(R.id.lv_all_list);
         lv_all_list.setOnItemClickListener(clickListItem);
 
@@ -61,6 +64,13 @@ public class AllListActivity extends AppCompatActivity {
 
     public void getAllList() {
         ideaDatas = IdeaDatas.getIdeaDatas();
+
+        if(ideaDatas.size() == 0){
+            tv_all_list_no_data.setVisibility(View.VISIBLE);
+            return;
+        }
+
+        tv_all_list_no_data.setVisibility(View.GONE);
         list = ideaDatas.get();
         if (adapter == null){
             adapter = new ListViewAdapter(AllListActivity.this, R.layout.layout_all_list_listlayout, list);

@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         }
         setRandomIdea();
     } //onCreate
-    
+
     public void setRandomIdea(){
         IdeaDatas ideaDatas = IdeaDatas.getIdeaDatas();
         if(ideaDatas.size() <= 0){

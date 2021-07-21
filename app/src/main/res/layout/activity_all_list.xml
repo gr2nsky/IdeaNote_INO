@@ -20,11 +20,24 @@
         android:textSize="20dp"
         android:textColor="@color/basic"
         android:fontFamily="@font/nanum_barun_gothic"/>
-    <ListView
-        android:id="@+id/lv_all_list"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/lv_all_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/tv_all_list_no_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="아이디어가 존재하지 않습니다.\n아이디어를 추가해보세요."
+            android:textSize="20dp"
+            android:textColor="@color/basic"
+            android:fontFamily="@font/nanum_barun_gothic"/>
+    </FrameLayout>
+
 
 
 </LinearLayout>
