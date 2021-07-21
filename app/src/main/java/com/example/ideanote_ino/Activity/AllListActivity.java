@@ -52,7 +52,6 @@ public class AllListActivity extends AppCompatActivity {
         } else {
             adapter.setList(list);
             adapter.notifyDataSetChanged();
-            Log.v(TAG, "#########################신");
         }
     }
 
