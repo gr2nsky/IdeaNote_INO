@@ -91,7 +91,7 @@ public class BottomSheetActivity extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
                 // delete
-                DeleteIdaDialog deleteIdaDialog = new DeleteIdaDialog(getActivity(), idea);
+                DeleteIdaDialog deleteIdaDialog = new DeleteIdaDialog(getActivity(), idea, 1);
                 deleteIdaDialog.deleteShow();
                 dismiss();
             }
