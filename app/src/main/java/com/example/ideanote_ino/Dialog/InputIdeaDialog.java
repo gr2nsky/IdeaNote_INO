@@ -12,7 +12,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.ideanote_ino.Activity.MainActivity;
+import com.example.ideanote_ino.Common.IdeaDatas;
 import com.example.ideanote_ino.R;
+import com.example.ideanote_ino.SQLite.IdeaDto;
 import com.example.ideanote_ino.SQLite.QueryForMain;
 
 public class InputIdeaDialog extends Dialog {
@@ -60,6 +62,11 @@ public class InputIdeaDialog extends Dialog {
             if (queries.insertIdea(str)){
                 queries.selectAllList();
                 Toast.makeText(con, "아이디어가 등록되었습니다.", Toast.LENGTH_SHORT).show();
+
+                IdeaDatas id = IdeaDatas.getIdeaDatas();
+                if (id.get().size() == 1){
+                    ((MainActivity) con).setRandomIdea();
+                }
             } else {
                 Toast.makeText(con, "아이디어 등록에 실패했습니다.", Toast.LENGTH_SHORT).show();
             }
