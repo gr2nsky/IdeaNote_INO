@@ -1,4 +1,4 @@
-package com.example.ideanote_ino.SQLite;
+package com.YtoJ.ideanote_ino.SQLite;
 
 public class IdeaDto {
 

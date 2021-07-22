@@ -1,4 +1,4 @@
-package com.example.ideanote_ino.Dialog;
+package com.YtoJ.ideanote_ino.Dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -10,11 +10,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.ideanote_ino.Activity.AllListActivity;
-import com.example.ideanote_ino.Activity.MainActivity;
-import com.example.ideanote_ino.R;
-import com.example.ideanote_ino.SQLite.IdeaDto;
-import com.example.ideanote_ino.SQLite.QueryForMain;
+import com.YtoJ.ideanote_ino.Activity.AllListActivity;
+import com.YtoJ.ideanote_ino.Activity.MainActivity;
+import com.YtoJ.ideanote_ino.R;
+import com.YtoJ.ideanote_ino.SQLite.IdeaDto;
+import com.YtoJ.ideanote_ino.SQLite.QueryForMain;
 
 public class DeleteIdaDialog extends Dialog {
     String TAG = "#DeleteIdeaDialog";

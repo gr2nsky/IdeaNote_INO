@@ -1,4 +1,4 @@
-package com.example.ideanote_ino.Activity;
+package com.YtoJ.ideanote_ino.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.ideanote_ino.R;
-import com.example.ideanote_ino.SQLite.MyIno;
+import com.YtoJ.ideanote_ino.R;
+import com.YtoJ.ideanote_ino.SQLite.MyIno;
 
 
 public class LogoActivity extends AppCompatActivity {
