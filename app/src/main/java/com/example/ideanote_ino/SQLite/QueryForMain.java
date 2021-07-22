@@ -29,7 +29,7 @@ public class QueryForMain {
 
         try{
             db = myIno.getReadableDatabase();
-            String query = "SELECT ino_num, ino_idea, ino_date FROM myino WHERE ino_dalete IS NULL";
+            String query = "SELECT ino_num, ino_idea, ino_date FROM myino WHERE ino_dalete IS NULL ORDER BY ino_num DESC";
 
             Cursor cursor = db.rawQuery(query, null);
             while(cursor.moveToNext()){
