@@ -1,24 +1,19 @@
-package com.example.ideanote_ino.Activity;
+package com.YtoJ.ideanote_ino.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-import com.example.ideanote_ino.Adapter.ListViewAdapter;
-import com.example.ideanote_ino.Common.IdeaDatas;
-import com.example.ideanote_ino.R;
-import com.example.ideanote_ino.SQLite.IdeaDto;
-import com.example.ideanote_ino.SQLite.QueryForMain;
+import com.YtoJ.ideanote_ino.Adapter.ListViewAdapter;
+import com.YtoJ.ideanote_ino.Common.IdeaDatas;
+import com.YtoJ.ideanote_ino.R;
+import com.YtoJ.ideanote_ino.SQLite.IdeaDto;
 
 import java.util.ArrayList;
 

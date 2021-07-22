@@ -1,12 +1,11 @@
-package com.example.ideanote_ino.SQLite;
+package com.YtoJ.ideanote_ino.SQLite;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.example.ideanote_ino.Common.IdeaDatas;
+import com.YtoJ.ideanote_ino.Common.IdeaDatas;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

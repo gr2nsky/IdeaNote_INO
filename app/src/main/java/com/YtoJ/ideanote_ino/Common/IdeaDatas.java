@@ -1,6 +1,6 @@
-package com.example.ideanote_ino.Common;
+package com.YtoJ.ideanote_ino.Common;
 
-import com.example.ideanote_ino.SQLite.IdeaDto;
+import com.YtoJ.ideanote_ino.SQLite.IdeaDto;
 
 import java.util.ArrayList;
 import java.util.Random;

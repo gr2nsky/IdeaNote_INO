@@ -1,16 +1,8 @@
-package com.example.ideanote_ino.SQLite;
+package com.YtoJ.ideanote_ino.SQLite;
 
 import android.content.Context;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class MyIno extends SQLiteOpenHelper {
 

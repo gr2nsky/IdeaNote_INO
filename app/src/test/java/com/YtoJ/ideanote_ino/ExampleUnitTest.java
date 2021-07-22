@@ -1,4 +1,4 @@
-package com.example.ideanote_ino;
+package com.YtoJ.ideanote_ino;
 
 import org.junit.Test;
 

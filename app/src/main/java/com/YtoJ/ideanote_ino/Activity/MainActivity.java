@@ -1,21 +1,19 @@
-package com.example.ideanote_ino.Activity;
+package com.YtoJ.ideanote_ino.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ideanote_ino.Common.IdeaDatas;
-import com.example.ideanote_ino.Dialog.InputIdeaDialog;
-import com.example.ideanote_ino.R;
-import com.example.ideanote_ino.SQLite.IdeaDto;
-import com.example.ideanote_ino.SQLite.QueryForMain;
+import com.YtoJ.ideanote_ino.Common.IdeaDatas;
+import com.YtoJ.ideanote_ino.Dialog.InputIdeaDialog;
+import com.YtoJ.ideanote_ino.R;
+import com.YtoJ.ideanote_ino.SQLite.IdeaDto;
+import com.YtoJ.ideanote_ino.SQLite.QueryForMain;
 
 public class MainActivity extends AppCompatActivity {
 

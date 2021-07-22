@@ -1,27 +1,22 @@
-package com.example.ideanote_ino.Activity;
+package com.YtoJ.ideanote_ino.Activity;
 
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ideanote_ino.Adapter.ListViewAdapter;
-import com.example.ideanote_ino.Dialog.DeleteIdaDialog;
-import com.example.ideanote_ino.Dialog.UpdateIdeaDialog;
-import com.example.ideanote_ino.R;
-import com.example.ideanote_ino.SQLite.IdeaDto;
+import com.YtoJ.ideanote_ino.Adapter.ListViewAdapter;
+import com.YtoJ.ideanote_ino.Dialog.DeleteIdaDialog;
+import com.YtoJ.ideanote_ino.Dialog.UpdateIdeaDialog;
+import com.YtoJ.ideanote_ino.R;
+import com.YtoJ.ideanote_ino.SQLite.IdeaDto;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import static android.content.Context.CLIPBOARD_SERVICE;
 
 public class BottomSheetActivity extends BottomSheetDialogFragment {

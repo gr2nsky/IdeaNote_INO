@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ideanote_ino">
+    package="com.YtoJ.ideanote_ino">
 
     <application
         android:allowBackup="true"
@@ -9,17 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IdeaNote_INO">
-        <activity android:name=".Activity.MainActivity">
-        <activity android:name=".Activity.BottomSheetActivity"></activity>
-        <activity android:name=".Activity.AllListActivity" />
-        <activity android:name=".Activity.LogoActivity">
+
+        <activity android:name="com.YtoJ.ideanote_ino.Activity.BottomSheetActivity"></activity>
+        <activity android:name="com.YtoJ.ideanote_ino.Activity.AllListActivity" />
+        <activity android:name="com.YtoJ.ideanote_ino.Activity.LogoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.MainActivity" />
+        <activity android:name="com.YtoJ.ideanote_ino.Activity.MainActivity" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.ideanote_ino.Adapter;
+package com.YtoJ.ideanote_ino.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,10 +9,8 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
-import com.example.ideanote_ino.Common.IdeaDatas;
-import com.example.ideanote_ino.R;
-import com.example.ideanote_ino.SQLite.IdeaDto;
-import com.example.ideanote_ino.SQLite.QueryForMain;
+import com.YtoJ.ideanote_ino.R;
+import com.YtoJ.ideanote_ino.SQLite.IdeaDto;
 
 import java.util.ArrayList;
 
