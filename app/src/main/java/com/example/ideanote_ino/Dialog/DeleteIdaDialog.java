@@ -16,8 +16,6 @@ import com.example.ideanote_ino.R;
 import com.example.ideanote_ino.SQLite.IdeaDto;
 import com.example.ideanote_ino.SQLite.QueryForMain;
 
-import java.util.ArrayList;
-
 public class DeleteIdaDialog extends Dialog {
     String TAG = "#DeleteIdeaDialog";
     private Context con;
