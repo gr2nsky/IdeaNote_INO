@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="basic">#444444</color>
+    <color name="date">#999999</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">@color/white</color>
     <color name="purple_700">@color/white</color>

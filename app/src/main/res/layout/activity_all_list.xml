@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.AllListActivity"
+    android:padding="20dp">
+
+    <SearchView
+        android:id="@+id/search_bar_all_list"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:searchIcon="@drawable/ic_baseline_search_40"
+        android:background="@drawable/backgound_all_list_search_bar"
+        android:iconifiedByDefault="false"
+        android:queryHint="검색어를 입력해 주세요"
+        android:textSize="20dp"
+        android:textColor="@color/basic"
+        android:fontFamily="@font/nanum_barun_gothic"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/lv_all_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/tv_all_list_no_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="아이디어가 존재하지 않습니다.\n아이디어를 추가해보세요."
+            android:textSize="20dp"
+            android:textColor="@color/basic"
+            android:fontFamily="@font/nanum_barun_gothic"/>
+    </FrameLayout>
+
+
+
+</LinearLayout>

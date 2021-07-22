@@ -19,11 +19,7 @@ public class LogoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logo);
 
-        myIno = new MyIno(LogoActivity.this);
-
-        /*로고 띄운 후 다른 액티비티로 이동*/
         logoView();
-
     }
 
     private void logoView(){
@@ -31,14 +27,11 @@ public class LogoActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                /*수정필요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                  intent 될 액티비티로 수정해야함*/
-
-//                Intent intent = new Intent(LogoActivity.this, LogoActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(LogoActivity.this, MainActivity.class);
+                startActivity(intent);
                 finish();
             }
-        }, 1000);
+        }, 2000);
     }
 
 }
