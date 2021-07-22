@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IdeaNote_INO">
+        <activity android:name=".Activity.MainActivity">
         <activity android:name=".Activity.BottomSheetActivity"></activity>
         <activity android:name=".Activity.AllListActivity" />
         <activity android:name=".Activity.LogoActivity">
