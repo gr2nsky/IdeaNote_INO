@@ -31,6 +31,7 @@ public class BottomSheetActivity extends BottomSheetDialogFragment {
     IdeaDto idea;
     ListViewAdapter adapter = null;
 
+
     public BottomSheetActivity(MainActivity parent, IdeaDto idea) {
         this.idea = idea;
         this.mainActivity = parent;

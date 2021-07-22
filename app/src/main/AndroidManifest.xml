@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IdeaNote_INO">
 
-        <activity android:name="com.YtoJ.ideanote_ino.Activity.BottomSheetActivity"></activity>
         <activity android:name="com.YtoJ.ideanote_ino.Activity.AllListActivity" />
         <activity android:name="com.YtoJ.ideanote_ino.Activity.LogoActivity">
             <intent-filter>
