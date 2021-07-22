@@ -9,8 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IdeaNote_INO">
+<<<<<<< Updated upstream
         <activity android:name=".Activity.LogoActivity"></activity>
         <activity android:name=".Activity.MainActivity">
+=======
+        <activity android:name=".Activity.BottomSheetActivity"/>
+        <activity android:name=".Activity.AllListActivity" />
+        <activity android:name=".Activity.LogoActivity">
+>>>>>>> Stashed changes
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
