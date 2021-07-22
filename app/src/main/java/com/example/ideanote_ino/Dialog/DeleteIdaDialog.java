@@ -2,7 +2,6 @@ package com.example.ideanote_ino.Dialog;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,10 +12,11 @@ import androidx.annotation.NonNull;
 
 import com.example.ideanote_ino.Activity.AllListActivity;
 import com.example.ideanote_ino.Activity.MainActivity;
-import com.example.ideanote_ino.Adapter.ListViewAdapter;
 import com.example.ideanote_ino.R;
 import com.example.ideanote_ino.SQLite.IdeaDto;
 import com.example.ideanote_ino.SQLite.QueryForMain;
+
+import java.util.ArrayList;
 
 public class DeleteIdaDialog extends Dialog {
     String TAG = "#DeleteIdeaDialog";

@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void setRandomIdea(){
         IdeaDatas ideaDatas = IdeaDatas.getIdeaDatas();
-        if(ideaDatas.size() <= 0){
+        if(ideaDatas.size() == 0){
             tv_main_idea.setText("출력할 아이디어가 없습니다.\n 전구를 터치해 아이디어를 추가해 주세요!");
             tv_main_idea_date.setText("");
             tv_main_idea.setOnClickListener(null);

@@ -75,9 +75,11 @@ public class AllListActivity extends AppCompatActivity {
         if (adapter == null){
             adapter = new ListViewAdapter(AllListActivity.this, R.layout.layout_all_list_listlayout, list);
             lv_all_list.setAdapter(adapter);
+            return;
         } else {
             adapter.setList(list);
             adapter.notifyDataSetChanged();
+            adapter.getFilter().filter(search_bar_all_list.getQuery());
         }
     }
 
