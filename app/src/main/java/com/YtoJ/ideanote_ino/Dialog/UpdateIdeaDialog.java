@@ -84,7 +84,7 @@ public class UpdateIdeaDialog extends Dialog {
                     MainActivity main = (MainActivity) con;
                     IdeaDto dto = queries.nowIdeaDto;
                     main.tv_main_idea.setText(dto.getIno_idea());
-                    main.tv_main_idea_date.setText(dto.getIno_date());
+//                    main.tv_main_idea_date.setText(dto.getIno_date());
                 } else {
                     AllListActivity al = (AllListActivity) con;
                     al.getAllList();
